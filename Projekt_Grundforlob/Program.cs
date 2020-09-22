@@ -10,7 +10,6 @@ namespace Projekt_Grundforlob
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hejsa");
         }
     }
 }
