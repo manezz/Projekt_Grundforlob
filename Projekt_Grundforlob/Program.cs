@@ -269,6 +269,7 @@ namespace fix1
 
             Console.WriteLine("Tryk for at lukke");
             Console.ReadKey();
+        {
         }
     }
 }
