@@ -20,6 +20,9 @@ namespace fix1
             string valg5 = "";
             string valg6 = "";
 
+            int plads1 = 0, 12 + lengde;
+            
+
             int talValg1 = 0;
 
             int antalluft = 0;
@@ -47,8 +50,12 @@ namespace fix1
 
             string kryds = "\x253C";
 
+            int startPos = 30;
+
             int brede = 80;
             int lengde = 20;
+
+            string svar1 = "Her skal du slaa lejer";
 
 
             while (i == 0)
@@ -56,9 +63,9 @@ namespace fix1
                 Console.WriteLine("Davs, halløj og goddag. Velkommen til Christians Festival!");
                 Console.WriteLine("I har nu to valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr");
 
-                valg1 = Console.ReadLine();  //modtager brugerens svar
+                valg1 = Console.ReadLine();
 
-                if (valg1.Length == 1)
+                if (valg1.Length == 1) // Det her er start menu
                 {
                     try 
                     {
@@ -88,7 +95,7 @@ namespace fix1
                 }
             }
 
-            while (i == 1) 
+            while (i == 1) // Det her er til brugerens plads
             {
                 Console.WriteLine("Skriv første cifre af dit tellefon nummer");
 
@@ -128,47 +135,50 @@ namespace fix1
 
                 for (int y = 1; y < brede; y++)
                 {
-                    Console.SetCursorPosition(y + 30, 8);
+                    Console.SetCursorPosition(y + startPos, 8);
                     Console.Write(top);
 
-                    Console.SetCursorPosition(y + 30, 8 + lengde);
+                    Console.SetCursorPosition(y + startPos, 8 + lengde);
                     Console.Write(bund);
 
-                    Console.SetCursorPosition(y + 30, 8 + lengde / 2);
+                    Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
                     Console.Write(vaMid);
                 }
 
                 for (int y = 1; y < lengde; y++)
                 {
-                    Console.SetCursorPosition(30, y + 8);
+                    Console.SetCursorPosition(startPos, y + 8);
                     Console.Write(vside);
 
-                    Console.SetCursorPosition(30 + brede, y + 8);
+                    Console.SetCursorPosition(startPos + brede, y + 8);
                     Console.Write(hside);
 
-                    Console.SetCursorPosition(30 + brede / 2, y + 8);
+                    Console.SetCursorPosition(startPos + brede / 2, y + 8);
                     Console.Write(loMid);
                 }
 
-                Console.SetCursorPosition(30, 8);
+                Console.SetCursorPosition(startPos, 8);
                 Console.Write(tvkant);
 
-                Console.SetCursorPosition(30 + brede, 8);
+                Console.SetCursorPosition(startPos + brede, 8);
                 Console.Write(thkant);
 
-                Console.SetCursorPosition(30, 8 + lengde);
+                Console.SetCursorPosition(startPos, 8 + lengde);
                 Console.Write(bvkant);
 
-                Console.SetCursorPosition(30 + brede, 8 + lengde);
+                Console.SetCursorPosition(startPos + brede, 8 + lengde);
                 Console.Write(bhkant);
 
-                Console.SetCursorPosition(30 + brede / 2, 8 + lengde / 2);
+                Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
                 Console.Write(kryds);
 
-                Console.SetCursorPosition(0, 12 + lengde);
-                }
+                Console.SetCursorPosition(startPos + brede / 4 - svar1.Length / 2, 8 + lengde / 4 );
+                Console.Write(svar1);
 
-                while (i == 2)
+                Console.SetCursorPosition(0, 12 + lengde);
+            }
+
+                while (i == 2)  // Det her er vores webshop
                 {
                     Console.WriteLine("Du har indtastet '2' for vores webshop");
                     Console.WriteLine("---------------Menu---------------");
