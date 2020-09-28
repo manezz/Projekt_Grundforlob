@@ -23,7 +23,7 @@ namespace fix1
             string valg5 = "";
             string valg6 = "";
 
-            int plads1 = 0, 12 + lengde;
+            //int plads1 = 0, 12 + lengde;
             
 
             int talValg1 = 0;
@@ -184,9 +184,7 @@ namespace fix1
                 while (i == 2)  // Det her er vores webshop
                 {
                   
-                Console.WriteLine("Du har indtastet '2' for vores webshop");
-
-                {
+                    Console.WriteLine("Du har indtastet '2' for vores webshop");
                     
                     Console.WriteLine("---------------Menu---------------");
                     Console.WriteLine("Tryk 1 - for Telt\t tryk 2 - for luftmadras\t tryk 3 - for sovepose");
