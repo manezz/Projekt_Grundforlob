@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace fix1
@@ -12,6 +13,8 @@ namespace fix1
         static void Main(string[] args)
         {           
             double result = 0;
+
+            string cifre = "";
 
             string valg1 = "";
             string valg2 = "";
@@ -61,9 +64,10 @@ namespace fix1
             while (i == 0)
             {
                 Console.WriteLine("Davs, halløj og goddag. Velkommen til Christians Festival!");
-                Console.WriteLine("I har nu to valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr");
 
-                valg1 = Console.ReadLine();
+                Console.WriteLine("Du har nu to valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr");
+                
+                valg1 = Console.ReadLine();  //modtager brugerens svar
 
                 if (valg1.Length == 1) // Det her er start menu
                 {
@@ -78,7 +82,7 @@ namespace fix1
                 }
                 else
                 {
-                    Console.WriteLine("Det er mere end en cifre");
+                    Console.WriteLine("Det indtastede nummer er for mange cifre");
                 }
 
                 if (talValg1 == 1)
@@ -97,25 +101,24 @@ namespace fix1
 
             while (i == 1) // Det her er til brugerens plads
             {
-                Console.WriteLine("Skriv første cifre af dit tellefon nummer");
-
+                Console.WriteLine("Indtast dit telefon nummer. Udenlansk nummere skal starte med 0");
                 nummer = Console.ReadLine();
+                
+                cifre = nummer.Substring(0, 1);
 
-                if (nummer.Length == 1)
+                Console.WriteLine($"Output {cifre}");               
+
+                if (nummer.Length <= 11)
                 {
                     try 
                     {
-                        talNummer = Convert.ToInt32(nummer);
+                        talNummer = Convert.ToInt32(cifre);
                         i = 0;
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Det er ikke et tal");
+                        Console.WriteLine("Det givende nummer er over 11 cifre. Prøv igen");
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Det er ikke kun en cifre");
                 }
 
                 if (talNummer >= 0 && talNummer <= 3)
@@ -180,7 +183,11 @@ namespace fix1
 
                 while (i == 2)  // Det her er vores webshop
                 {
-                    Console.WriteLine("Du har indtastet '2' for vores webshop");
+                  
+                Console.WriteLine("Du har indtastet '2' for vores webshop");
+
+                {
+                    
                     Console.WriteLine("---------------Menu---------------");
                     Console.WriteLine("Tryk 1 - for Telt\t tryk 2 - for luftmadras\t tryk 3 - for sovepose");
                     Console.WriteLine("-----Telt----------350,75kr");
@@ -194,7 +201,7 @@ namespace fix1
                         case "1":
                             {
                                 Console.WriteLine("Du har valgt Telt - til 350,75kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
-                                valg4 = Console.ReadLine();
+                                valg4 = Console.ReadLine().ToUpper();
                                 switch (valg4) 
                                 {
                                     case "Y":
@@ -203,9 +210,10 @@ namespace fix1
 
                                             antaltelt = Convert.ToInt32(Console.ReadLine());                                                  
                                             result = antaltelt * 350.75;
-                                            Console.WriteLine("Du har valgt[0] telte til pris af 350,75kr - totalpris af [1]kr", antaltelt, result);
-
-                                            break;
+                                            Console.WriteLine("Du har valgt {0} telte til pris af 350,75kr - totalpris af {1}kr", antaltelt, result);
+                                            Thread.Sleep(3000);
+                                            Console.Clear();
+                                        break;
                                         }
                                     case "N":
                                         {
@@ -220,7 +228,7 @@ namespace fix1
                             {
                                 Console.WriteLine("Du har valgt luftmadras - til 255,00kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
 
-                                valg5 = Console.ReadLine();
+                                valg5 = Console.ReadLine().ToUpper();
 
                                 switch (valg5)
                                 {
@@ -231,9 +239,10 @@ namespace fix1
                                             antalluft = Convert.ToInt32(Console.ReadLine());
                                             result = antalluft * 255;
 
-                                            Console.WriteLine("Du har valgt[0] luftmadraser til pris af 255,00kr - totalpris af [1]kr", antalluft, result);
-
-                                            break;
+                                            Console.WriteLine("Du har valgt {0} luftmadraser til pris af 255,00kr - totalpris af {1}kr", antalluft, result);
+                                            Thread.Sleep(3000);
+                                        Console.Clear();
+                                        break;
                                         }
                                     case "N":
                                         {
@@ -249,7 +258,7 @@ namespace fix1
                             {
                                 Console.WriteLine("Du har valgt sovepose - til 150,50kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
 
-                                valg6 = Console.ReadLine();
+                                valg6 = Console.ReadLine().ToUpper();
 
                                 switch (valg6)
                                 {
@@ -260,8 +269,9 @@ namespace fix1
                                             antalsove = Convert.ToInt32(Console.ReadLine());
                                             result = antalsove * 150.50;
 
-                                            Console.WriteLine("Du har valgt[0] soveposer til pris af 255,00kr - totalpris af [1]kr", antalsove, result);
-
+                                            Console.WriteLine("Du har valgt {0} soveposer til pris af 255,00kr - totalpris af {1}kr", antalsove, result);
+                                            Thread.Sleep(3000);
+                                            Console.Clear();
                                             break;
                                         }
                                     case "N":
@@ -271,13 +281,15 @@ namespace fix1
                                             break;
                                         }
                                 }
-                                break;
+                                break;                            
                             }     
                     }
                 }
-
-
-            Console.WriteLine("Tryk for at lukke");
+            Console.ReadKey();
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine("NYD FESTIVALEN!");
             Console.ReadKey();
         }
     }
