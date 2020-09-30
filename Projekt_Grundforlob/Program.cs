@@ -11,15 +11,13 @@ namespace fix1
     class Program
     {
         static void Main(string[] args)
-        {
-            bool loopBack = true;
+        {          
 
             double result = 0;
 
             string cifre = "";
 
-            string valg1 = "";
-            string valg2 = "";
+            string valg1 = "";           
             string valg3 = "";
             string valg4 = "";
             string valg5 = "";
@@ -248,294 +246,295 @@ namespace fix1
 
                 }
                 while (i == 3)  // Det her er vores webshop
-                {
-                    while (loopBack == true)
+                {                    
+                    Console.WriteLine("Du har indtastet '2' for vores webshop");
+
+                    Console.WriteLine("---------------Menu---------------");
+                    Console.WriteLine("Tryk 1 - for Telt\t tryk 2 - for luftmadras\t tryk 3 - for sovepose\t tryk 4 for at gå tilbage");
+                    Console.WriteLine("-----Telt----------350,75kr");
+                    Console.WriteLine("-----Luftmadras----255,00kr");
+                    Console.WriteLine("-----Sovepose------150,50kr");
+
+                    valg3 = Console.ReadLine();
+
+                    switch (valg3)
                     {
-                        Console.WriteLine("Du har indtastet '2' for vores webshop");
-
-                        Console.WriteLine("---------------Menu---------------");
-                        Console.WriteLine("Tryk 1 - for Telt\t tryk 2 - for luftmadras\t tryk 3 - for sovepose\t tryk 4 for at gå tilbage");
-                        Console.WriteLine("-----Telt----------350,75kr");
-                        Console.WriteLine("-----Luftmadras----255,00kr");
-                        Console.WriteLine("-----Sovepose------150,50kr");
-
-                        valg3 = Console.ReadLine();
-
-                        switch (valg3)
-                        {
-                            case "1":
+                        case "1":
+                            {
+                                Console.WriteLine("Du har valgt Telt - til 350,75kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
+                                valg4 = Console.ReadLine().ToUpper();
+                                switch (valg4)
                                 {
-                                    Console.WriteLine("Du har valgt Telt - til 350,75kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
-                                    valg4 = Console.ReadLine().ToUpper();
-                                    switch (valg4)
-                                    {
-                                        case "Y":
+                                    case "Y":
+                                        {
+                                            Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at telte");
+
+                                            antaltelt = Convert.ToInt32(Console.ReadLine());
+
+                                            Console.Clear();
+
+                                            result = antaltelt * 350.75;
+                                            Console.WriteLine("Du har valgt {0} telte til pris af 350,75kr - totalpris af {1}kr", antaltelt, result);
+                                            Console.WriteLine("Du kan hente dine varer her");
+
+                                            for (int y = 1; y < brede; y++)
                                             {
-                                                Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at telte");
+                                                Console.SetCursorPosition(y + startPos, 8);
+                                                Console.Write(top);
 
-                                                antaltelt = Convert.ToInt32(Console.ReadLine());
+                                                Console.SetCursorPosition(y + startPos, 8 + lengde);
+                                                Console.Write(bund);
 
-                                                Console.Clear();
-
-                                                result = antaltelt * 350.75;
-                                                Console.WriteLine("Du har valgt {0} telte til pris af 350,75kr - totalpris af {1}kr", antaltelt, result);
-                                                Console.WriteLine("Du kan hente dine varer her");
-
-                                                for (int y = 1; y < brede; y++)
-                                                {
-                                                    Console.SetCursorPosition(y + startPos, 8);
-                                                    Console.Write(top);
-
-                                                    Console.SetCursorPosition(y + startPos, 8 + lengde);
-                                                    Console.Write(bund);
-
-                                                    Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
-                                                    Console.Write(vaMid);
-                                                }
-
-                                                for (int y = 1; y < lengde; y++)
-                                                {
-                                                    Console.SetCursorPosition(startPos, y + 8);
-                                                    Console.Write(vside);
-
-                                                    Console.SetCursorPosition(startPos + brede, y + 8);
-                                                    Console.Write(hside);
-
-                                                    Console.SetCursorPosition(startPos + brede / 2, y + 8);
-                                                    Console.Write(loMid);
-                                                }
-
-                                                Console.SetCursorPosition(startPos, 8);
-                                                Console.Write(tvkant);
-
-                                                Console.SetCursorPosition(startPos + brede, 8);
-                                                Console.Write(thkant);
-
-                                                Console.SetCursorPosition(startPos, 8 + lengde);
-                                                Console.Write(bvkant);
-
-                                                Console.SetCursorPosition(startPos + brede, 8 + lengde);
-                                                Console.Write(bhkant);
-
-                                                Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
-                                                Console.Write(kryds);
-
-                                                Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
-                                                Console.Write(plads1);
-
-                                                Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
-                                                Console.Write(plads2);
-
-                                                Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
-                                                Console.Write(plads3);
-
-                                                Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
-                                                Console.BackgroundColor = ConsoleColor.Red;
-                                                Console.Write(Vareudlevering);
-                                                Console.ResetColor();
-
-                                                Thread.Sleep(5000);
-                                                Console.Clear();
-
-                                                break;
+                                                Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
+                                                Console.Write(vaMid);
                                             }
-                                        case "N":
+
+                                            for (int y = 1; y < lengde; y++)
                                             {
-                                                Console.Clear();
-                                                Console.WriteLine("Dit valg er blevet annulleret");
+                                                Console.SetCursorPosition(startPos, y + 8);
+                                                Console.Write(vside);
 
-                                                loopBack = true;
+                                                Console.SetCursorPosition(startPos + brede, y + 8);
+                                                Console.Write(hside);
 
-                                                break;
+                                                Console.SetCursorPosition(startPos + brede / 2, y + 8);
+                                                Console.Write(loMid);
                                             }
-                                    }
-                                    break;
+
+                                            Console.SetCursorPosition(startPos, 8);
+                                            Console.Write(tvkant);
+
+                                            Console.SetCursorPosition(startPos + brede, 8);
+                                            Console.Write(thkant);
+
+                                            Console.SetCursorPosition(startPos, 8 + lengde);
+                                            Console.Write(bvkant);
+
+                                            Console.SetCursorPosition(startPos + brede, 8 + lengde);
+                                            Console.Write(bhkant);
+
+                                            Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
+                                            Console.Write(kryds);
+
+                                            Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
+                                            Console.Write(plads1);
+
+                                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
+                                            Console.Write(plads2);
+
+                                            Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
+                                            Console.Write(plads3);
+
+                                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                                            Console.BackgroundColor = ConsoleColor.Red;
+                                            Console.Write(Vareudlevering);
+                                            Console.ResetColor();
+
+                                            Thread.Sleep(5000);
+                                            Console.Clear();
+
+                                            break;
+                                        }
+                                    case "N":
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Dit valg er blevet annulleret");
+
+                                            i = 0;
+
+                                            break;
+                                        }
                                 }
-                            case "2":
+                                break;
+                            }
+                        case "2":
+                            {
+                                Console.WriteLine("Du har valgt luftmadras - til 255,00kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
+
+                                valg5 = Console.ReadLine().ToUpper();
+
+                                switch (valg5)
                                 {
-                                    Console.WriteLine("Du har valgt luftmadras - til 255,00kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
+                                    case "Y":
+                                        {
+                                            Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at luftmadraser");
 
-                                    valg5 = Console.ReadLine().ToUpper();
+                                            antalluft = Convert.ToInt32(Console.ReadLine());
 
-                                    switch (valg5)
-                                    {
-                                        case "Y":
+                                            Console.Clear();
+
+                                            result = antalluft * 255;
+
+                                            Console.WriteLine("Du har valgt {0} luftmadraser til pris af 255,00kr - totalpris af {1}kr", antalluft, result);
+
+                                            for (int y = 1; y < brede; y++)
                                             {
-                                                Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at luftmadraser");
+                                                Console.SetCursorPosition(y + startPos, 8);
+                                                Console.Write(top);
 
-                                                antalluft = Convert.ToInt32(Console.ReadLine());
+                                                Console.SetCursorPosition(y + startPos, 8 + lengde);
+                                                Console.Write(bund);
 
-                                                Console.Clear();
-
-                                                result = antalluft * 255;
-
-                                                Console.WriteLine("Du har valgt {0} luftmadraser til pris af 255,00kr - totalpris af {1}kr", antalluft, result);
-
-                                                for (int y = 1; y < brede; y++)
-                                                {
-                                                    Console.SetCursorPosition(y + startPos, 8);
-                                                    Console.Write(top);
-
-                                                    Console.SetCursorPosition(y + startPos, 8 + lengde);
-                                                    Console.Write(bund);
-
-                                                    Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
-                                                    Console.Write(vaMid);
-                                                }
-
-                                                for (int y = 1; y < lengde; y++)
-                                                {
-                                                    Console.SetCursorPosition(startPos, y + 8);
-                                                    Console.Write(vside);
-
-                                                    Console.SetCursorPosition(startPos + brede, y + 8);
-                                                    Console.Write(hside);
-
-                                                    Console.SetCursorPosition(startPos + brede / 2, y + 8);
-                                                    Console.Write(loMid);
-                                                }
-
-                                                Console.SetCursorPosition(startPos, 8);
-                                                Console.Write(tvkant);
-
-                                                Console.SetCursorPosition(startPos + brede, 8);
-                                                Console.Write(thkant);
-
-                                                Console.SetCursorPosition(startPos, 8 + lengde);
-                                                Console.Write(bvkant);
-
-                                                Console.SetCursorPosition(startPos + brede, 8 + lengde);
-                                                Console.Write(bhkant);
-
-                                                Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
-                                                Console.Write(kryds);
-
-                                                Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
-                                                Console.Write(plads1);
-
-                                                Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
-                                                Console.Write(plads2);
-
-                                                Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
-                                                Console.Write(plads3);
-
-                                                Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
-                                                Console.BackgroundColor = ConsoleColor.Red;
-                                                Console.Write(Vareudlevering);
-                                                Console.ResetColor();
-
-                                                Thread.Sleep(5000);
-                                                Console.Clear();
-                                                break;
+                                                Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
+                                                Console.Write(vaMid);
                                             }
-                                        case "N":
+
+                                            for (int y = 1; y < lengde; y++)
                                             {
-                                                Console.Clear();
-                                                Console.WriteLine("Dit valg er blevet annulleret");
+                                                Console.SetCursorPosition(startPos, y + 8);
+                                                Console.Write(vside);
 
-                                                loopBack = true;
+                                                Console.SetCursorPosition(startPos + brede, y + 8);
+                                                Console.Write(hside);
 
-                                                break;
+                                                Console.SetCursorPosition(startPos + brede / 2, y + 8);
+                                                Console.Write(loMid);
                                             }
-                                    }
 
-                                    break;
+                                            Console.SetCursorPosition(startPos, 8);
+                                            Console.Write(tvkant);
+
+                                            Console.SetCursorPosition(startPos + brede, 8);
+                                            Console.Write(thkant);
+
+                                            Console.SetCursorPosition(startPos, 8 + lengde);
+                                            Console.Write(bvkant);
+
+                                            Console.SetCursorPosition(startPos + brede, 8 + lengde);
+                                            Console.Write(bhkant);
+
+                                            Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
+                                            Console.Write(kryds);
+
+                                            Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
+                                            Console.Write(plads1);
+
+                                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
+                                            Console.Write(plads2);
+
+                                            Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
+                                            Console.Write(plads3);
+
+                                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                                            Console.BackgroundColor = ConsoleColor.Red;
+                                            Console.Write(Vareudlevering);
+                                            Console.ResetColor();
+
+                                            Thread.Sleep(5000);
+                                            Console.Clear();
+                                            break;
+                                        }
+                                    case "N":
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Dit valg er blevet annulleret");
+
+                                        i = 3;
+
+                                            break;
+                                        }
                                 }
-                            case "3":
+
+                                break;
+                            }
+                        case "3":
+                            {
+                                Console.WriteLine("Du har valgt sovepose - til 150,50kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
+
+                                valg6 = Console.ReadLine().ToUpper();
+
+                                switch (valg6)
                                 {
-                                    Console.WriteLine("Du har valgt sovepose - til 150,50kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
+                                    case "Y":
+                                        {
+                                            Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at soveposer");
 
-                                    valg6 = Console.ReadLine().ToUpper();
+                                            antalsove = Convert.ToInt32(Console.ReadLine());
 
-                                    switch (valg6)
-                                    {
-                                        case "Y":
+                                            Console.Clear();
+
+                                            result = antalsove * 150.50;
+
+                                            Console.WriteLine("Du har valgt {0} soveposer til pris af 255,00kr - totalpris af {1}kr", antalsove, result);
+
+                                            for (int y = 1; y < brede; y++)
                                             {
-                                                Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at soveposer");
+                                                Console.SetCursorPosition(y + startPos, 8);
+                                                Console.Write(top);
 
-                                                antalsove = Convert.ToInt32(Console.ReadLine());
+                                                Console.SetCursorPosition(y + startPos, 8 + lengde);
+                                                Console.Write(bund);
 
-                                                Console.Clear();
-
-                                                result = antalsove * 150.50;
-
-                                                Console.WriteLine("Du har valgt {0} soveposer til pris af 255,00kr - totalpris af {1}kr", antalsove, result);
-
-                                                for (int y = 1; y < brede; y++)
-                                                {
-                                                    Console.SetCursorPosition(y + startPos, 8);
-                                                    Console.Write(top);
-
-                                                    Console.SetCursorPosition(y + startPos, 8 + lengde);
-                                                    Console.Write(bund);
-
-                                                    Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
-                                                    Console.Write(vaMid);
-                                                }
-
-                                                for (int y = 1; y < lengde; y++)
-                                                {
-                                                    Console.SetCursorPosition(startPos, y + 8);
-                                                    Console.Write(vside);
-
-                                                    Console.SetCursorPosition(startPos + brede, y + 8);
-                                                    Console.Write(hside);
-
-                                                    Console.SetCursorPosition(startPos + brede / 2, y + 8);
-                                                    Console.Write(loMid);
-                                                }
-
-                                                Console.SetCursorPosition(startPos, 8);
-                                                Console.Write(tvkant);
-
-                                                Console.SetCursorPosition(startPos + brede, 8);
-                                                Console.Write(thkant);
-
-                                                Console.SetCursorPosition(startPos, 8 + lengde);
-                                                Console.Write(bvkant);
-
-                                                Console.SetCursorPosition(startPos + brede, 8 + lengde);
-                                                Console.Write(bhkant);
-
-                                                Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
-                                                Console.Write(kryds);
-
-                                                Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
-                                                Console.Write(plads1);
-
-                                                Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
-                                                Console.Write(plads2);
-
-                                                Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
-                                                Console.Write(plads3);
-
-                                                Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
-                                                Console.BackgroundColor = ConsoleColor.Red;
-                                                Console.Write(Vareudlevering);
-                                                Console.ResetColor();
-
-                                                Thread.Sleep(5000);
-                                                Console.Clear();
-                                                break;
+                                                Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
+                                                Console.Write(vaMid);
                                             }
-                                        case "N":
+
+                                            for (int y = 1; y < lengde; y++)
                                             {
-                                                Console.Clear();
-                                                Console.WriteLine("Dit valg er blevet annulleret");
+                                                Console.SetCursorPosition(startPos, y + 8);
+                                                Console.Write(vside);
 
-                                                loopBack = true;
+                                                Console.SetCursorPosition(startPos + brede, y + 8);
+                                                Console.Write(hside);
 
-                                                break;
+                                                Console.SetCursorPosition(startPos + brede / 2, y + 8);
+                                                Console.Write(loMid);
                                             }
-                                        case "4":
-                                            {
-                                                break;
-                                            }
-                                    }
-                                    break;
+
+                                            Console.SetCursorPosition(startPos, 8);
+                                            Console.Write(tvkant);
+
+                                            Console.SetCursorPosition(startPos + brede, 8);
+                                            Console.Write(thkant);
+
+                                            Console.SetCursorPosition(startPos, 8 + lengde);
+                                            Console.Write(bvkant);
+
+                                            Console.SetCursorPosition(startPos + brede, 8 + lengde);
+                                            Console.Write(bhkant);
+
+                                            Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
+                                            Console.Write(kryds);
+
+                                            Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
+                                            Console.Write(plads1);
+
+                                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
+                                            Console.Write(plads2);
+
+                                            Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
+                                            Console.Write(plads3);
+
+                                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                                            Console.BackgroundColor = ConsoleColor.Red;
+                                            Console.Write(Vareudlevering);
+                                            Console.ResetColor();
+
+                                            Thread.Sleep(5000);
+                                            Console.Clear();
+                                            break;
+                                        }
+                                    case "N":
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine("Dit valg er blevet annulleret");
+
+                                        i = 3;
+
+                                            break;
+                                        }
+
                                 }
-                        }
+                                break;
+                            }
+                        case "4":
+                            {
+                                i = 0;
+                                Console.Clear();
+                                break;
+                            }
                     }
+                    
 
 
                 }
