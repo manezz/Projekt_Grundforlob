@@ -11,7 +11,9 @@ namespace fix1
     class Program
     {
         static void Main(string[] args)
-        {           
+        {
+            bool loopBack = true;
+
             double result = 0;
 
             string cifre = "";
@@ -64,7 +66,8 @@ namespace fix1
 
 
             while (i == 0)
-            {
+            {                        
+
                 Console.WriteLine("Davs, halløj og goddag. Velkommen til Christians Festival!");
 
                 Console.WriteLine("Du har nu to valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr");
@@ -231,15 +234,14 @@ namespace fix1
 
                 Console.SetCursorPosition(0, 12 + lengde);
 
-            }
+            }                       
+            while (i == 2 || loopBack==true)  // Det her er vores webshop
+            {                
 
-            while (i == 2)  // Det her er vores webshop
-            {
-                  
                 Console.WriteLine("Du har indtastet '2' for vores webshop");
                     
                 Console.WriteLine("---------------Menu---------------");
-                Console.WriteLine("Tryk 1 - for Telt\t tryk 2 - for luftmadras\t tryk 3 - for sovepose");
+                Console.WriteLine("Tryk 1 - for Telt\t tryk 2 - for luftmadras\t tryk 3 - for sovepose\t tryk 4 for at gå tilbage");
                 Console.WriteLine("-----Telt----------350,75kr");
                 Console.WriteLine("-----Luftmadras----255,00kr");
                 Console.WriteLine("-----Sovepose------150,50kr");
@@ -326,9 +328,12 @@ namespace fix1
                                     }
                                 case "N":
                                     {
-                                        Console.WriteLine("Dit valg er blevet annulleret");
+                                    Console.Clear();
+                                    Console.WriteLine("Dit valg er blevet annulleret");
 
-                                        break;
+                                    loopBack = true;
+
+                                    break;
                                     }
                             }
                             break;
@@ -412,9 +417,12 @@ namespace fix1
                                     }
                                 case "N":
                                     {
-                                        Console.WriteLine("Dit valg er blevet annulleret");
+                                     Console.Clear();
+                                     Console.WriteLine("Dit valg er blevet annulleret");
 
-                                        break;
+                                    loopBack = true;
+
+                                    break;
                                     }
                             }
                                     
@@ -499,8 +507,15 @@ namespace fix1
                                     }
                                 case "N":
                                     {
+                                    Console.Clear();
                                     Console.WriteLine("Dit valg er blevet annulleret");
 
+                                    loopBack = true;
+
+                                    break;
+                                    }
+                                case "4":
+                                    {                                    
                                     break;
                                     }
                             }
@@ -525,5 +540,3 @@ namespace fix1
         }
     }
 }
-
-
