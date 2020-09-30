@@ -67,7 +67,7 @@ namespace fix1
             {
                 Console.WriteLine("Davs, halløj og goddag. Velkommen til Christians Festival!");
 
-                Console.WriteLine("Du har nu to valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr");
+                Console.WriteLine("Du har nu 4 valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr\n3. Vis kort over festivalen\n4. Aflut programmet");
                 
                 valg1 = Console.ReadLine();  //modtager brugerens svar
 
@@ -94,6 +94,14 @@ namespace fix1
                 else if (talValg1 == 2)
                 {
                     i = 2;
+                }
+                else if (talValg1 == 3)
+                {
+                    i = 3;
+                }
+                else if (talValg1 == 4)
+                {
+                    i = 4;
                 }
                 else
                 {
@@ -508,10 +516,69 @@ namespace fix1
                         }     
                 }
             }
-
+            
             while (i == 3)
             {
-                Console.ReadKey();
+                for (int y = 1; y < brede; y++)
+                {
+                    Console.SetCursorPosition(y + startPos, 8);
+                    Console.Write(top);
+
+                    Console.SetCursorPosition(y + startPos, 8 + lengde);
+                    Console.Write(bund);
+
+                    Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
+                    Console.Write(vaMid);
+                }
+
+                for (int y = 1; y < lengde; y++)
+                {
+                    Console.SetCursorPosition(startPos, y + 8);
+                    Console.Write(vside);
+
+                    Console.SetCursorPosition(startPos + brede, y + 8);
+                    Console.Write(hside);
+
+                    Console.SetCursorPosition(startPos + brede / 2, y + 8);
+                    Console.Write(loMid);
+                }
+
+                Console.SetCursorPosition(startPos, 8);
+                Console.Write(tvkant);
+
+                Console.SetCursorPosition(startPos + brede, 8);
+                Console.Write(thkant);
+
+                Console.SetCursorPosition(startPos, 8 + lengde);
+                Console.Write(bvkant);
+
+                Console.SetCursorPosition(startPos + brede, 8 + lengde);
+                Console.Write(bhkant);
+
+                Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
+                Console.Write(kryds);
+
+                Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
+                Console.Write(plads1);
+
+                Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
+                Console.Write(plads2);
+
+                Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
+                Console.Write(plads3);
+
+                Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                Console.Write(Vareudlevering);
+
+                Thread.Sleep(5000);
+                Console.Clear();
+
+                i = 0;
+
+            }
+
+            while (i == 4)
+            {
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Black;
