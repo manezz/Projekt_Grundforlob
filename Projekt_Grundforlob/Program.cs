@@ -29,11 +29,11 @@ namespace fix1
             int antalsove = 0;
             int antaltelt = 0;
 
-            int i = 0;
+            int i = 0;  // Start værdi til while loop
 
-            string nummer = "tom";
-            int talNummer = 0;
-            int pladsNummer = 0;
+            string nummer = "tom";  // Personens nummer som string
+            int talNummer = 0;  // Personens første cifre af nummer som int
+            int pladsNummer = 0;  // Pladsen som personen skal have - Baseret på hvad personens nummer var
 
             string tvkant = "\x250C";
             string thkant = "\x2510";
@@ -63,79 +63,91 @@ namespace fix1
             string Vareudlevering = "Vareudlevering";
 
 
-            while (i == 0)
+            while (i == 0)  // Pga i == 0 kan while loop starte - Gør også at programmet kan starte forfra når værdi er nul
             {
-                i = 1;
+                i = 1;  // Ændre værdi til 1 så den kan starte det andet while loop
 
-                while (i == 1)
+                while (i == 1)  // Pga værdi i == 1 kan den kører
                 {
-
                     Console.WriteLine("Davs, halløj og goddag. Velkommen til Christians Festival!");
 
+                    // Den printer de 4 mugligheder i consolen
                     Console.WriteLine("Du har nu 4 valgmuligheder.\n1. Festivalsplads - Hvor i må slå lejr\n2. Vores webshop hvor du kan købe camping udstyr\n3. Vis kort over festivalen\n4. Aflut programmet");
+                    Console.WriteLine();
 
                     valg1 = Console.ReadLine();  //modtager brugerens svar
 
-                    if (valg1.Length == 1) // Det her er start menu
+                    // Det her er start menu
+                    if (valg1.Length == 1)  // Tjækker for lengden af valg1 string og ser om det er lig med en
                     {
-                        try
+                        try  // Forsøg at konvertere fra input til tal
                         {
                             talValg1 = Convert.ToInt32(valg1);
                         }
-                        catch (Exception)
+                        catch (Exception)  // Hvis det ikke er et tal finder den ud af det og giver inputet som er under
                         {
-                            Console.WriteLine("Det er ikke et tal");
+                            Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("Fejl  Det er ikke et tal");
+                            Console.ResetColor();
+
+                            Thread.Sleep(3000);
+                            Console.Clear();
                         }
                     }
-                    else
+                    else  // Hvis valg1 string ikke er 1 lang giver den følgene output i stedet
                     {
-                        Console.WriteLine("Det indtastede nummer er for mange cifre");
-                    }
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Fejl  Det indtastede nummer er for mange cifre");
+                        Console.ResetColor();
 
-                    if (talValg1 == 1)
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                    }
+                    
+                    //  Konvertere brugerens valg til en værdi der kan bruges i vores loops
+                    if (talValg1 == 1)  // Den giver adgang til pladsuddelling 
                     {
                         i = 2;
                     }
-                    else if (talValg1 == 2)
+                    else if (talValg1 == 2)  // Den giver adgang til webshop
                     {
                         i = 3;
                     }
-                    else if (talValg1 == 3)
+                    else if (talValg1 == 3)  // Den giver adgang til kortet
                     {
                         i = 4;
                     }
-                    else if (talValg1 == 4)
+                    else if (talValg1 == 4)  // Den afslutter programmet
                     {
                         i = 5;
                     }
-                    else
-                    {
-                        Console.WriteLine("Det er ikke et acceptabelt valg");
-                    }
                 }
-
-                while (i == 2) // Det her er til brugerens plads
+                // Det her er til pladsuddelling
+                while (i == 2)  //  Hvis brugeren har valgt 1 så er i == 2 så kører dette while loop
                 {
                     Console.WriteLine("Indtast dit telefon nummer. Udenlansk nummere skal starte med 0");
-                    nummer = Console.ReadLine();
+                    nummer = Console.ReadLine();  // Angiver nummer væredi til brugeres svar
 
-                    cifre = nummer.Substring(0, 1);
+                    cifre = nummer.Substring(0, 1);  // Gemmer den første cifre af brugerens nummer
 
-                    Console.WriteLine($"Output {cifre}");
+                    //Console.WriteLine($"Output {cifre}");
 
-                    if (nummer.Length <= 11)
+                    if (nummer.Length <= 11)  // Hvis brugerens nummer er længere end 11 cifre så vil kører om igen
                     {
-                        try
+                        try  // Hvis den her ikke kan konvertere til int
                         {
                             talNummer = Convert.ToInt32(cifre);
-                            i = 0;
+                            //i = 0;
                         }
-                        catch (Exception)
+                        catch (Exception) // Vil den give dette svar og kører den igen
                         {
                             Console.WriteLine("Det givende nummer er over 11 cifre. Prøv igen");
                         }
                     }
 
+                    // Giver et pladsnummer baseret på brugerens nummer er
                     if (talNummer >= 0 && talNummer <= 3)
                     {
                         pladsNummer = 1;
@@ -144,13 +156,14 @@ namespace fix1
                     {
                         pladsNummer = 2;
                     }
-                    else if (talNummer >= 7 && talNummer <= 9)
+                    else
                     {
                         pladsNummer = 3;
                     }
 
-                    Console.WriteLine($"Dit plads nummer er {pladsNummer}");
+                    Console.WriteLine($"Dit plads nummer er {pladsNummer}");  // $ gør at du kan sætte værdier ind i en string
 
+                    // Laver kassens top, bund og midte (vandrette linjer)
                     for (int y = 1; y < brede; y++)
                     {
                         Console.SetCursorPosition(y + startPos, 8);
@@ -163,6 +176,7 @@ namespace fix1
                         Console.Write(vaMid);
                     }
 
+                    // Laver kassens venstre side, højre side og midte (lodrette linjer)
                     for (int y = 1; y < lengde; y++)
                     {
                         Console.SetCursorPosition(startPos, y + 8);
@@ -175,6 +189,7 @@ namespace fix1
                         Console.Write(loMid);
                     }
 
+                    // Laver hjørner der får kassen til at se mere fuldendt ud
                     Console.SetCursorPosition(startPos, 8);
                     Console.Write(tvkant);
 
@@ -187,9 +202,11 @@ namespace fix1
                     Console.SetCursorPosition(startPos + brede, 8 + lengde);
                     Console.Write(bhkant);
 
+                    // Laver kryds i midt af kassen for at den ser mere fuldendt ud
                     Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
                     Console.Write(kryds);
 
+                    // Skriver tekst i felterne basseret på hvad brugerens pladsnummer er
                     if (pladsNummer == 1)
                     {
                         Console.SetCursorPosition(startPos + brede / 4 - svar1.Length / 2, 8 + lengde / 4);
@@ -241,11 +258,12 @@ namespace fix1
                         Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
                         Console.Write(Vareudlevering);
                     }
-
-                    Console.SetCursorPosition(0, 12 + lengde);
-
+                    
+                    Console.SetCursorPosition(0, 12 + lengde);  // Sætter curser postion på plads igen
                 }
-                while (i == 3)  // Det her er vores webshop
+
+                // Det her er vores webshop
+                while (i == 3) 
                 {                    
                     Console.WriteLine("Du har indtastet '2' for vores webshop");
 
@@ -606,6 +624,8 @@ namespace fix1
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.WriteLine("NYD FESTIVALEN!");
                     Console.ReadKey();
+                    Console.ResetColor();
+                    Console.Clear();
 
                     i = 0;
                 }
