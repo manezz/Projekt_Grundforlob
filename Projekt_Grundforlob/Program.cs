@@ -12,11 +12,11 @@ namespace fix1
     {
         static void Main(string[] args)
         {          
-
+            // Double til udregning af webshop priser
             double result = 0;
-
+            // Udtager det første cifre af telefonnummer for plads placering
             string cifre = "";
-
+            // Strings til bruger valg
             string valg1 = "";           
             string valg3 = "";
             string valg4 = "";
@@ -24,7 +24,7 @@ namespace fix1
             string valg6 = "";
 
             int talValg1 = 0;
-
+            // Forskelllige int til antal vare bruger vil købe i webshop
             int antalluft = 0;
             int antalsove = 0;
             int antaltelt = 0;
@@ -34,7 +34,7 @@ namespace fix1
             string nummer = "tom";  // Personens nummer som string
             int talNummer = 0;  // Personens første cifre af nummer som int
             int pladsNummer = 0;  // Pladsen som personen skal have - Baseret på hvad personens nummer var
-
+            // Til firkant
             string tvkant = "\x250C";
             string thkant = "\x2510";
             string bvkant = "\x2514";
@@ -56,7 +56,7 @@ namespace fix1
             int lengde = 20;
 
             string svar1 = "Her skal du slaa lejer";
-
+            // Navne til placering i firkant
             string plads1 = "Plads 1";
             string plads2 = "Plads 2";
             string plads3 = "Plads 3";
@@ -264,7 +264,7 @@ namespace fix1
 
                 // Det her er vores webshop
                 while (i == 3) 
-                {                    
+                {    // Tekst i begyndelse af webshop                
                     Console.WriteLine("Du har indtastet '2' for vores webshop");
 
                     Console.WriteLine("---------------Menu---------------");
@@ -273,28 +273,29 @@ namespace fix1
                     Console.WriteLine("-----Luftmadras----255,00kr");
                     Console.WriteLine("-----Sovepose------150,50kr");
 
-                    valg3 = Console.ReadLine();
+                    valg3 = Console.ReadLine(); // Modtager brugers valg i shop
 
-                    switch (valg3)
+                    switch (valg3) // Start af switch baseret på valget før
                     {
-                        case "1":
+                        case "1": // case til hovedswitch med vareudvalg
                             {
                                 Console.WriteLine("Du har valgt Telt - til 350,75kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
-                                valg4 = Console.ReadLine().ToUpper();
-                                switch (valg4)
+                                valg4 = Console.ReadLine().ToUpper(); // Læser brugers svar og gør bogstav til Stort så det er brugbart til næste switch
+                                switch (valg4) // Denne switch er til at godkende valgte vare eller ej
                                 {
-                                    case "Y":
+                                    case "Y": // Y hvis købet skal godkendes
                                         {
                                             Console.WriteLine("Vi har godkendt dit køb. Vælg nu antal at telte");
 
-                                            antaltelt = Convert.ToInt32(Console.ReadLine());
+                                            antaltelt = Convert.ToInt32(Console.ReadLine()); // Konverterer string til int så tal kan bruges
 
                                             Console.Clear();
 
-                                            result = antaltelt * 350.75;
+                                            result = antaltelt * 350.75; // Udregner resultat er totalpris
                                             Console.WriteLine("Du har valgt {0} telte til pris af 350,75kr - totalpris af {1}kr", antaltelt, result);
                                             Console.WriteLine("Du kan hente dine varer her");
 
+                                            // Firkant til afhentning af vare
                                             for (int y = 1; y < brede; y++)
                                             {
                                                 Console.SetCursorPosition(y + startPos, 8);
@@ -353,7 +354,7 @@ namespace fix1
 
                                             break;
                                         }
-                                    case "N":
+                                    case "N": // Hvis købet skal annulleres
                                         {
                                             Console.Clear();
                                             Console.WriteLine("Dit valg er blevet annulleret");
@@ -365,7 +366,7 @@ namespace fix1
                                 }
                                 break;
                             }
-                        case "2":
+                        case "2": // case til hovedswitch med vareudvalg
                             {
                                 Console.WriteLine("Du har valgt luftmadras - til 255,00kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
 
@@ -455,7 +456,7 @@ namespace fix1
 
                                 break;
                             }
-                        case "3":
+                        case "3": // case til hovedswitch med vareudvalg
                             {
                                 Console.WriteLine("Du har valgt sovepose - til 150,50kr. Tryk 'Y' hvis du vil købe et telt eller 'N' hvis du fortryder");
 
@@ -545,8 +546,9 @@ namespace fix1
                                 }
                                 break;
                             }
-                        case "4":
+                        case "4": // case til hovedswitch med vareudvalg
                             {
+                                // Den er til hvis bruger vil ud af webshop. Sender tilbage til startskærm
                                 i = 0;
                                 Console.Clear();
                                 break;
@@ -556,7 +558,7 @@ namespace fix1
 
 
                 }
-
+                 // Til kortet ved valg 3 i hovedskærmen
                 while (i == 4)
                 {
                     for (int y = 1; y < brede; y++)
@@ -616,7 +618,7 @@ namespace fix1
                     i = 0;
 
                 }
-
+                // Til valg 4 i hovedskærmen
                 while (i == 5)
                 {
                     Console.BackgroundColor = ConsoleColor.Green;
