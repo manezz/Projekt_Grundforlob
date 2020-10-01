@@ -549,7 +549,7 @@ namespace fix1
                         case "4": // case til hovedswitch med vareudvalg
                             {
                                 // Den er til hvis bruger vil ud af webshop. Sender tilbage til startskærm
-                                i = 0;
+                                i = 0; // bruger start loopet som er i = 0
                                 Console.Clear();
                                 break;
                             }
@@ -629,7 +629,7 @@ namespace fix1
                     Console.ResetColor();
                     Console.Clear();
 
-                    i = 0;
+                    i = 0; // loop sender tilbage til start
                 }
             }
             
