@@ -88,6 +88,8 @@ namespace fix1
                         }
                         catch (Exception)  // Hvis det ikke er et tal finder den ud af det og giver inputet som er under
                         {
+                            talValg1 = 0;
+                            
                             Console.WriteLine();
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine("Fejl  Det er ikke et tal");
@@ -99,6 +101,8 @@ namespace fix1
                     }
                     else  // Hvis valg1 string ikke er 1 lang giver den følgene output i stedet
                     {
+                        talValg1 = 0;
+                        
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("Fejl  Det indtastede nummer er for mange cifre");
