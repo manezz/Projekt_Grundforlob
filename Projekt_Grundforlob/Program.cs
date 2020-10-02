@@ -77,6 +77,8 @@ namespace fix1
 
                     valg1 = Console.ReadLine();  //modtager brugerens svar
 
+                    Console.Clear();
+
                     // Det her er start menu
                     if (valg1.Length == 1)  // Tjækker for lengden af valg1 string og ser om det er lig med en
                     {
@@ -128,7 +130,10 @@ namespace fix1
                 while (i == 2)  //  Hvis brugeren har valgt 1 så er i == 2 så kører dette while loop
                 {
                     Console.WriteLine("Indtast dit telefon nummer. Udenlansk nummere skal starte med 0");
+                    Console.WriteLine();
                     nummer = Console.ReadLine();  // Angiver nummer væredi til brugeres svar
+
+                    Console.WriteLine();
 
                     cifre = nummer.Substring(0, 1);  // Gemmer den første cifre af brugerens nummer
 
@@ -139,16 +144,33 @@ namespace fix1
                         try  // Hvis den her ikke kan konvertere til int
                         {
                             talNummer = Convert.ToInt32(cifre);
-                            //i = 0;
                         }
                         catch (Exception) // Vil den give dette svar og kører den igen
                         {
-                            Console.WriteLine("Det givende nummer er over 11 cifre. Prøv igen");
+                            talNummer = 0;
+
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("Fejl  Det givende nummer er ikke et tal");
+                            Console.ResetColor();
+
+                            Thread.Sleep(3000);
+                            Console.Clear();
                         }
+                    }
+                    else
+                    {
+                        talNummer = 0;
+
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("Fejl  Det givene nummer er over 11 cifre");
+                        Console.ResetColor();
+
+                        Thread.Sleep(3000);
+                        Console.Clear();
                     }
 
                     // Giver et pladsnummer baseret på brugerens nummer er
-                    if (talNummer >= 0 && talNummer <= 3)
+                    if (talNummer >= 1 && talNummer <= 3)
                     {
                         pladsNummer = 1;
                     }
@@ -156,110 +178,123 @@ namespace fix1
                     {
                         pladsNummer = 2;
                     }
-                    else
+                    else if (talNummer >= 7 && talNummer <= 9)
                     {
                         pladsNummer = 3;
                     }
-
-                    Console.WriteLine($"Dit plads nummer er {pladsNummer}");  // $ gør at du kan sætte værdier ind i en string
-
-                    // Laver kassens top, bund og midte (vandrette linjer)
-                    for (int y = 1; y < brede; y++)
-                    {
-                        Console.SetCursorPosition(y + startPos, 8);
-                        Console.Write(top);
-
-                        Console.SetCursorPosition(y + startPos, 8 + lengde);
-                        Console.Write(bund);
-
-                        Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
-                        Console.Write(vaMid);
-                    }
-
-                    // Laver kassens venstre side, højre side og midte (lodrette linjer)
-                    for (int y = 1; y < lengde; y++)
-                    {
-                        Console.SetCursorPosition(startPos, y + 8);
-                        Console.Write(vside);
-
-                        Console.SetCursorPosition(startPos + brede, y + 8);
-                        Console.Write(hside);
-
-                        Console.SetCursorPosition(startPos + brede / 2, y + 8);
-                        Console.Write(loMid);
-                    }
-
-                    // Laver hjørner der får kassen til at se mere fuldendt ud
-                    Console.SetCursorPosition(startPos, 8);
-                    Console.Write(tvkant);
-
-                    Console.SetCursorPosition(startPos + brede, 8);
-                    Console.Write(thkant);
-
-                    Console.SetCursorPosition(startPos, 8 + lengde);
-                    Console.Write(bvkant);
-
-                    Console.SetCursorPosition(startPos + brede, 8 + lengde);
-                    Console.Write(bhkant);
-
-                    // Laver kryds i midt af kassen for at den ser mere fuldendt ud
-                    Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
-                    Console.Write(kryds);
-
-                    // Skriver tekst i felterne basseret på hvad brugerens pladsnummer er
-                    if (pladsNummer == 1)
-                    {
-                        Console.SetCursorPosition(startPos + brede / 4 - svar1.Length / 2, 8 + lengde / 4);
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.Write(svar1);
-                        Console.ResetColor();
-
-                        Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
-                        Console.Write(plads2);
-
-                        Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
-                        Console.Write(plads3);
-
-                        Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
-                        Console.Write(Vareudlevering);
-
-                    }
-                    else if (pladsNummer == 2)
-                    {
-                        Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
-                        Console.Write(plads1);
-
-
-                        Console.SetCursorPosition(startPos + 3 * (brede / 4) - svar1.Length / 2, 8 + lengde / 4);
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.Write(svar1);
-                        Console.ResetColor();
-
-                        Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
-                        Console.Write(plads3);
-
-                        Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
-                        Console.Write(Vareudlevering);
-                    }
                     else
                     {
-                        Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
-                        Console.Write(plads1);
-
-
-                        Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
-                        Console.Write(plads2);
-
-                        Console.SetCursorPosition(startPos + brede / 4 - svar1.Length / 2, 8 + 3 * (lengde / 4));
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.Write(svar1);
-                        Console.ResetColor();
-
-                        Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
-                        Console.Write(Vareudlevering);
+                        pladsNummer = 0;
                     }
-                    
-                    Console.SetCursorPosition(0, 12 + lengde);  // Sætter curser postion på plads igen
+
+                    if (pladsNummer >= 1 && pladsNummer <= 3)
+                    {
+                        Console.WriteLine($"Dit plads nummer er {pladsNummer}");  // $ gør at du kan sætte værdier ind i en string
+
+                        // Laver kassens top, bund og midte (vandrette linjer)
+                        for (int y = 1; y < brede; y++)
+                        {
+                            Console.SetCursorPosition(y + startPos, 8);
+                            Console.Write(top);
+
+                            Console.SetCursorPosition(y + startPos, 8 + lengde);
+                            Console.Write(bund);
+
+                            Console.SetCursorPosition(y + startPos, 8 + lengde / 2);
+                            Console.Write(vaMid);
+                        }
+
+                        // Laver kassens venstre side, højre side og midte (lodrette linjer)
+                        for (int y = 1; y < lengde; y++)
+                        {
+                            Console.SetCursorPosition(startPos, y + 8);
+                            Console.Write(vside);
+
+                            Console.SetCursorPosition(startPos + brede, y + 8);
+                            Console.Write(hside);
+
+                            Console.SetCursorPosition(startPos + brede / 2, y + 8);
+                            Console.Write(loMid);
+                        }
+
+                        // Laver hjørner der får kassen til at se mere fuldendt ud
+                        Console.SetCursorPosition(startPos, 8);
+                        Console.Write(tvkant);
+
+                        Console.SetCursorPosition(startPos + brede, 8);
+                        Console.Write(thkant);
+
+                        Console.SetCursorPosition(startPos, 8 + lengde);
+                        Console.Write(bvkant);
+
+                        Console.SetCursorPosition(startPos + brede, 8 + lengde);
+                        Console.Write(bhkant);
+
+                        // Laver kryds i midt af kassen for at den ser mere fuldendt ud
+                        Console.SetCursorPosition(startPos + brede / 2, 8 + lengde / 2);
+                        Console.Write(kryds);
+
+                        // Skriver tekst i felterne basseret på hvad brugerens pladsnummer er
+                        if (pladsNummer == 1)
+                        {
+                            Console.SetCursorPosition(startPos + brede / 4 - svar1.Length / 2, 8 + lengde / 4);
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(svar1);
+                            Console.ResetColor();
+
+                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
+                            Console.Write(plads2);
+
+                            Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
+                            Console.Write(plads3);
+
+                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                            Console.Write(Vareudlevering);
+
+                        }
+                        else if (pladsNummer == 2)
+                        {
+                            Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
+                            Console.Write(plads1);
+
+
+                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - svar1.Length / 2, 8 + lengde / 4);
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(svar1);
+                            Console.ResetColor();
+
+                            Console.SetCursorPosition(startPos + brede / 4 - plads3.Length / 2, 8 + 3 * (lengde / 4));
+                            Console.Write(plads3);
+
+                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                            Console.Write(Vareudlevering);
+                        }
+                        else
+                        {
+                            Console.SetCursorPosition(startPos + brede / 4 - plads1.Length / 2, 8 + lengde / 4);
+                            Console.Write(plads1);
+
+
+                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - plads2.Length / 2, 8 + lengde / 4);
+                            Console.Write(plads2);
+
+                            Console.SetCursorPosition(startPos + brede / 4 - svar1.Length / 2, 8 + 3 * (lengde / 4));
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(svar1);
+                            Console.ResetColor();
+
+                            Console.SetCursorPosition(startPos + 3 * (brede / 4) - Vareudlevering.Length / 2, 8 + 3 * (lengde / 4));
+                            Console.Write(Vareudlevering);
+                        }
+
+                        Console.SetCursorPosition(0, 12 + lengde);  // Sætter curser postion på plads igen
+
+                        Thread.Sleep(5000);
+                        Console.Clear();
+
+                        i = 0;
+                    }
+
                 }
 
                 // Det her er vores webshop
